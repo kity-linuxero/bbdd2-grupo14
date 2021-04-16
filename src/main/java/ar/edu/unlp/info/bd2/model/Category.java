@@ -1,5 +1,9 @@
 package ar.edu.unlp.info.bd2.model;
 
+import javax.persistence.GeneratedValue;
+
+import org.springframework.data.annotation.Id;
+
 public class Category {
 
 	@Id
