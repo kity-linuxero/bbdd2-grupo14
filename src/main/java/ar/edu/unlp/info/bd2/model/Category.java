@@ -7,12 +7,8 @@ public class Category {
     private Integer id;
 	private String name;
 	
-	public Category() {
-		
-	}
-	
-	public createCategory(String aName) {
-		name = aName;
+	public Category(String name) {
+		this.name = name;
 	}
 	
 	public void setName(String aName) {

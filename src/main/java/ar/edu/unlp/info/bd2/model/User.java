@@ -1,9 +1,10 @@
 package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
-
+@Entity
 public class User {
-	
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String email;
 	private String password;
