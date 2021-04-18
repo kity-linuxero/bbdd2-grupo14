@@ -1,10 +1,12 @@
 package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
+
+import javax.persistence.Entity;
 @Entity
 public class User {
-	@Id
-	@GeneratedValue
+//	@Id
+//	@GeneratedValue
 	private Integer id;
 	private String email;
 	private String password;

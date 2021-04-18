@@ -1,9 +1,10 @@
 package ar.edu.unlp.info.bd2.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
 import org.springframework.data.annotation.Id;
-
+@Entity
 public class Category {
 
 	@Id
@@ -20,15 +21,11 @@ public class Category {
 		name = aName;
 	}
 
-	public getCategoryByName(){
-		return this;
-	}
-	
-	public getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public getName() {
+	public String getName() {
 		return name;
 	}
 	
