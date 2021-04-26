@@ -6,18 +6,13 @@ public class Provider {
 	private String name;
 	private String cuit;
 	
-	public Provider(Integer id, String name, String cuit) {
-		this.id = id;
+	public Provider(String name, String cuit) {
 		this.name = name;
 		this.cuit = cuit;
 	}
 
 	public Integer getId() {
 		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getName() {

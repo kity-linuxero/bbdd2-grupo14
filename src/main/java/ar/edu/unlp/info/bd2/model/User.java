@@ -12,7 +12,7 @@ public class User {
 	private String password;
 	private String fullName;
 	private Date dayOfBirth;
-	private Purchase[] purchases; //Esto está bien?
+	//private Purchase[] purchases; //Por ahora parece que no lo pide
 	// private Payment payment;
 	
 	public String getEmail() {
@@ -43,12 +43,12 @@ public class User {
 		return id;
 	}
 	
-	public Purchase[] getPurchases() {
+	/*public Purchase[] getPurchases() {
 		return purchases;
 	}
 	public void setPurchases(Purchase[] purchases) {
 		this.purchases = purchases;
 	}
-	
+	*/
 
 }

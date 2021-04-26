@@ -1,4 +1,5 @@
 package ar.edu.unlp.info.bd2.model;
+import ar.edu.unlp.info.bd2.model.Category;
 
 public class Product {
 	
@@ -24,9 +25,6 @@ public class Product {
 	}
 	public void setWeight(float weight) {
 		this.weight = weight;
-	}
-	public double getPrice() {
-    //		return price;
 	}
 
 	public Integer getId() {
