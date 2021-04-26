@@ -11,7 +11,7 @@ public class Provider {
 		this.cuit = cuit;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
