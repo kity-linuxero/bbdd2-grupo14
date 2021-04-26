@@ -5,81 +5,110 @@ import java.sql.Date;
 public class Purchase {
 	
 	private int id;
+	private ProductOnSale productOnSale;
 	private Integer quantity;
-	private float shipping;
-	private String address;
-	private Payment paymentMethod;
-	private Product productOnSale;
 	private User client;
 	private DeliveryMethod deliveryMethod;
-	private float coorX;
-	private float coorY;
+	private Payment paymentMethod;
+	private String address;
+	private float coordX;
+	private float coordY;
 	private Date dateOfPurchase;
+	//private float shipping;
 	
+	public Purchase(ProductOnSale productOnSale, Integer quantity, User client, DeliveryMethod deliveryMethod,
+			Payment paymentMethod, String address, float coordX, float coordY, Date dateOfPurchase) {
+		super();
+		this.productOnSale = productOnSale;
+		this.quantity = quantity;
+		this.client = client;
+		this.deliveryMethod = deliveryMethod;
+		this.paymentMethod = paymentMethod;
+		this.address = address;
+		this.coordX = coordX;
+		this.coordY = coordY;
+		this.dateOfPurchase = dateOfPurchase;
+	}
+
+	public ProductOnSale getProductOnSale() {
+		return productOnSale;
+	}
+
+	public void setProductOnSale(ProductOnSale productOnSale) {
+		this.productOnSale = productOnSale;
+	}
+
 	public Integer getQuantity() {
 		return quantity;
 	}
+
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public float getShipping() {
-		return shipping;
-	}
-	public void setShipping(float shipping) {
-		this.shipping = shipping;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public Payment getPaymentMethod() {
-		return paymentMethod;
-	}
-	public void setPaymentMethod(Payment paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
-	public Product getProductOnSale() {
-		return productOnSale;
-	}
-	public void setProductOnSale(Product productOnSale) {
-		this.productOnSale = productOnSale;
-	}
+
 	public User getClient() {
 		return client;
 	}
+
 	public void setClient(User client) {
 		this.client = client;
 	}
+
 	public DeliveryMethod getDeliveryMethod() {
 		return deliveryMethod;
 	}
+
 	public void setDeliveryMethod(DeliveryMethod deliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
 	}
-	public float getCoorX() {
-		return coorX;
+
+	public Payment getPaymentMethod() {
+		return paymentMethod;
 	}
-	public void setCoorX(float coorX) {
-		this.coorX = coorX;
+
+	public void setPaymentMethod(Payment paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
-	public float getCoorY() {
-		return coorY;
+
+	public String getAddress() {
+		return address;
 	}
-	public void setCoorY(float coorY) {
-		this.coorY = coorY;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
+
+	public float getCoordX() {
+		return coordX;
+	}
+
+	public void setCoordX(float coordX) {
+		this.coordX = coordX;
+	}
+
+	public float getCoordY() {
+		return coordY;
+	}
+
+	public void setCoordY(float coordY) {
+		this.coordY = coordY;
+	}
+
 	public Date getDateOfPurchase() {
 		return dateOfPurchase;
 	}
+
 	public void setDateOfPurchase(Date dateOfPurchase) {
 		this.dateOfPurchase = dateOfPurchase;
 	}
-	public Integer getId() {
+
+	public int getId() {
 		return id;
 	}
 	
+	public float getAmount(){
+		return (this.getProductOnSale().getPrice()*this.getQuantity()) + this.deliveryMethod.getCost();
+	}
 	
 
 }
