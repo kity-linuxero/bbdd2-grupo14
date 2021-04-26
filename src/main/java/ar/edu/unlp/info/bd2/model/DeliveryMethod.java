@@ -46,7 +46,7 @@ public class DeliveryMethod {
 		this.endWeight = endWeight;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 	

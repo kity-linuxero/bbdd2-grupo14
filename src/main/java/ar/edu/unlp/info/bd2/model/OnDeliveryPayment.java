@@ -28,7 +28,7 @@ public class OnDeliveryPayment extends Payment {
 		this.promisedAmount = promisedAmount;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 	

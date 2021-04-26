@@ -39,7 +39,7 @@ public class User {
 	public void setDayOfBirth(Date dayOfBirth) {
 		this.dayOfBirth = dayOfBirth;
 	}
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 	

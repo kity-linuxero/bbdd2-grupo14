@@ -69,7 +69,7 @@ public class CreditCardPayment {
 		this.owner = owner;
 	}
 
-	public Integer getId() {
+	public id getId() {
 		return id;
 	}
 	
