@@ -59,12 +59,5 @@ public class CreditCardPayment extends PaymentMethod{
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
-<<<<<<< HEAD
-=======
-
-	public id getId() {
-		return id;
-	}
->>>>>>> 8123b7e9021c5fffbc9fc1a03ff524b3ecfb0154
 	
 }

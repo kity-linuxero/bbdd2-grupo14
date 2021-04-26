@@ -17,7 +17,7 @@ public abstract class PaymentMethod {
 		this.name = name;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 

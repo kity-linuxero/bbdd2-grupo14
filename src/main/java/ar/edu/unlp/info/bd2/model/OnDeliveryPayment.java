@@ -17,13 +17,5 @@ public class OnDeliveryPayment extends PaymentMethod {
 	public void setPromisedAmount(float promisedAmount) {
 		this.promisedAmount = promisedAmount;
 	}
-<<<<<<< HEAD
-=======
-
-	public int getId() {
-		return id;
-	}
->>>>>>> 8123b7e9021c5fffbc9fc1a03ff524b3ecfb0154
-	
 	
 }
