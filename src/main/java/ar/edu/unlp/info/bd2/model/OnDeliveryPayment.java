@@ -1,23 +1,13 @@
 package ar.edu.unlp.info.bd2.model;
 
-public class OnDeliveryPayment extends Payment {
-	
-	private int id;
-	private String name;
+public class OnDeliveryPayment extends PaymentMethod {
+
 	private float promisedAmount;
 	
 	public OnDeliveryPayment(String name, float promisedAmount) {
-		super();
+		super(name);
 		this.name = name;
 		this.promisedAmount = promisedAmount;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public float getPromisedAmount() {
@@ -26,10 +16,6 @@ public class OnDeliveryPayment extends Payment {
 
 	public void setPromisedAmount(float promisedAmount) {
 		this.promisedAmount = promisedAmount;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 	
 	

@@ -9,7 +9,7 @@ public class Purchase {
 	private Integer quantity;
 	private User client;
 	private DeliveryMethod deliveryMethod;
-	private Payment paymentMethod;
+	private PaymentMethod paymentMethod;
 	private String address;
 	private float coordX;
 	private float coordY;
@@ -17,7 +17,7 @@ public class Purchase {
 	//private float shipping;
 	
 	public Purchase(ProductOnSale productOnSale, Integer quantity, User client, DeliveryMethod deliveryMethod,
-			Payment paymentMethod, String address, float coordX, float coordY, Date dateOfPurchase) {
+			PaymentMethod paymentMethod, String address, float coordX, float coordY, Date dateOfPurchase) {
 		super();
 		this.productOnSale = productOnSale;
 		this.quantity = quantity;
@@ -62,11 +62,11 @@ public class Purchase {
 		this.deliveryMethod = deliveryMethod;
 	}
 
-	public Payment getPaymentMethod() {
+	public PaymentMethod getPaymentMethod() {
 		return paymentMethod;
 	}
 
-	public void setPaymentMethod(Payment paymentMethod) {
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
 

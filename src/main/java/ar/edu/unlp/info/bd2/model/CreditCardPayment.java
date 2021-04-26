@@ -2,10 +2,8 @@ package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
 
-public class CreditCardPayment {
+public class CreditCardPayment extends PaymentMethod{
 	
-	private int id;
-	private String name;
 	private String brand;
 	private String number;
 	private Date expiry;
@@ -13,20 +11,13 @@ public class CreditCardPayment {
 	private String owner;
 	
 	public CreditCardPayment(String name, String brand, String number, Date expiry, Integer cvv, String owner) {
+		super(name);
 		this.name = name;
 		this.brand = brand;
 		this.number = number;
 		this.expiry = expiry;
 		this.cvv = cvv;
 		this.owner = owner;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getBrand() {
@@ -67,10 +58,6 @@ public class CreditCardPayment {
 
 	public void setOwner(String owner) {
 		this.owner = owner;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 	
 }

@@ -9,6 +9,7 @@ import ar.edu.unlp.info.bd2.model.Product;
 import ar.edu.unlp.info.bd2.model.Provider;
 import ar.edu.unlp.info.bd2.model.Purchase;
 import ar.edu.unlp.info.bd2.model.User;
+import ar.edu.unlp.info.bd2.repositories.MLException;
 import ar.edu.unlp.info.bd2.repositories.MLRepository;
 
 public class MLServiceImpl implements MLService {
