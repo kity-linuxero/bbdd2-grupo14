@@ -9,7 +9,7 @@ public class Category {
 
 	@Id
 	@GeneratedValue
-    private Integer id;
+    private int id;
 	private String name;
 	
 	public Category(String name) {

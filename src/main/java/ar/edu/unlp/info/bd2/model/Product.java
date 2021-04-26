@@ -3,7 +3,7 @@ import ar.edu.unlp.info.bd2.model.Category;
 
 public class Product {
 	
-	private Integer id;
+	private int id;
 	private String name;
 	private float weight;
 	private Category category;

@@ -1,7 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
 public class DeliveryMethod {
-	private Integer id;
+	private int id;
 	private String name;
 	private Integer cost;
 	private float startWeight;

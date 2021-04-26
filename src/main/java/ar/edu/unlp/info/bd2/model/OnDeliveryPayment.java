@@ -2,7 +2,7 @@ package ar.edu.unlp.info.bd2.model;
 
 public class OnDeliveryPayment extends Payment {
 	
-	private Integer id;
+	private int id;
 	private String name;
 	private float promisedAmount;
 	

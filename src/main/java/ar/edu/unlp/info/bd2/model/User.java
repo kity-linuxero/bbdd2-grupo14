@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 public class User {
 //	@Id
 //	@GeneratedValue
-	private Integer id;
+	private int id;
 	private String email;
 	private String password;
 	private String fullName;

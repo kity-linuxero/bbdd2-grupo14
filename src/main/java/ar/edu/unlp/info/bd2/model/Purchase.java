@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Purchase {
 	
-	private Integer id;
+	private int id;
 	private Integer quantity;
 	private float shipping;
 	private String address;

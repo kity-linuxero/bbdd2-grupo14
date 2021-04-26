@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class CreditCardPayment {
 	
-	private Integer id;
+	private int id;
 	private String name;
 	private String brand;
 	private String number;
