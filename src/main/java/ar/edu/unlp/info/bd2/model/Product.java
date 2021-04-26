@@ -1,5 +1,4 @@
 package ar.edu.unlp.info.bd2.model;
-import ar.edu.unlp.info.bd2.model.Category;
 
 public class Product {
 	
