@@ -2,7 +2,7 @@ package ar.edu.unlp.info.bd2.model;
 
 public abstract class PaymentMethod {
 
-	private int id;
+	private Long id;
 	protected String name;
 
 	public PaymentMethod(String name) {
@@ -17,7 +17,7 @@ public abstract class PaymentMethod {
 		this.name = name;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 

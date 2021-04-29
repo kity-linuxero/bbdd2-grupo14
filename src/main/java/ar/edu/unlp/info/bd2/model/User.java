@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 public class User {
 //	@Id
 //	@GeneratedValue
-	private int id;
+	private Long id;
 	private String email;
 	private String password;
 	private String fullName;
@@ -39,7 +39,7 @@ public class User {
 	public void setDayOfBirth(Date dayOfBirth) {
 		this.dayOfBirth = dayOfBirth;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	

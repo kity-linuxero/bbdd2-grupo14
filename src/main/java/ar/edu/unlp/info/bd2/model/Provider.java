@@ -2,7 +2,7 @@ package ar.edu.unlp.info.bd2.model;
 
 public class Provider {
 	
-	private int id;
+	private Long id;
 	private String name;
 	private String cuit;
 	
@@ -11,7 +11,7 @@ public class Provider {
 		this.cuit = cuit;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 

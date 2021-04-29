@@ -2,7 +2,7 @@ package ar.edu.unlp.info.bd2.model;
 
 public class Product {
 	
-	private int id;
+	private Long id;
 	private String name;
 	private float weight;
 	private Category category;
@@ -26,7 +26,7 @@ public class Product {
 		this.weight = weight;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	

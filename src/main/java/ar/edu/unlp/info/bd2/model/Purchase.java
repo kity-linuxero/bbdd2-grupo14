@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Purchase {
 	
-	private int id;
+	private Long id;
 	private ProductOnSale productOnSale;
 	private Integer quantity;
 	private User client;
@@ -102,7 +102,7 @@ public class Purchase {
 		this.dateOfPurchase = dateOfPurchase;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	

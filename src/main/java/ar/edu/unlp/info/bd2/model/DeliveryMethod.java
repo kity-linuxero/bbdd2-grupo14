@@ -1,7 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
 public class DeliveryMethod {
-	private int id;
+	private Long id;
 	private String name;
 	private Integer cost;
 	private float startWeight;
@@ -46,7 +46,7 @@ public class DeliveryMethod {
 		this.endWeight = endWeight;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	

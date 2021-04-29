@@ -9,7 +9,7 @@ public class Category {
 
 	@Id
 	@GeneratedValue
-    private int id;
+    private Long id;
 	private String name;
 	
 	public Category(String name) {
@@ -21,7 +21,7 @@ public class Category {
 		name = aName;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	

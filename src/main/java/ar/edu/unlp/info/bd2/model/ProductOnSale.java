@@ -7,14 +7,15 @@ public class ProductOnSale {
 	private Product product;
 	private Provider provider;
 	private float price;
-	private Date id; //preguntar
+	private Long id;
+	private Date initialDate;
 	
 	public ProductOnSale(Product product, Provider provider, float price, Date id) {
 		super();
 		this.product = product;
 		this.provider = provider;
 		this.price = price;
-		this.id = id;
+		//this.id = id;
 	}
 
 	public Product getProduct() {
@@ -41,8 +42,16 @@ public class ProductOnSale {
 		this.price = price;
 	}
 
-	public Date getId() {
+	public Long getId() {
 		return id;
+	}
+
+	public Date getInitialDate() {
+		return initialDate;
+	}
+
+	public void setInitialDate(Date initialDate) {
+		this.initialDate = initialDate;
 	}
 	
 }
