@@ -2,8 +2,14 @@ package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
 
+import javax.persistence.*;
+
+
+@Entity
 public class Purchase {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private ProductOnSale productOnSale;
 	private Integer quantity;

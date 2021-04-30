@@ -1,14 +1,12 @@
 package ar.edu.unlp.info.bd2.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 
-import org.springframework.data.annotation.Id;
 @Entity
 public class Category {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	private String name;
 	

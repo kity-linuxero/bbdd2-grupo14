@@ -1,9 +1,15 @@
 package ar.edu.unlp.info.bd2.model;
 
-import java.util.Date;
+import java.sql.Date;
 
+import javax.persistence.*;
+
+
+@Entity
 public class ProductOnSale {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Product product;
 	private Provider provider;
 	private float price;

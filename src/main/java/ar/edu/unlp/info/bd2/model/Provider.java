@@ -1,7 +1,12 @@
 package ar.edu.unlp.info.bd2.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Provider {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String cuit;

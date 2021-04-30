@@ -1,9 +1,14 @@
 package ar.edu.unlp.info.bd2.model;
 
-import java.util.Date;
+import java.sql.Date;
 
+import javax.persistence.*;
+
+
+@Entity
 public class PriceHistory {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Date dateFrom;
 	private Date dateTo;
