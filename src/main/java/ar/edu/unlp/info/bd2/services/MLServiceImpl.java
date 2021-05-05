@@ -81,8 +81,7 @@ public class MLServiceImpl implements MLService {
 
 	@Override
 	public Optional<User> getUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.getUserByUsername(email);;
 	}
 
 	@Override
