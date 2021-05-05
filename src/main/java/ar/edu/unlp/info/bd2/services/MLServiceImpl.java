@@ -31,7 +31,7 @@ public class MLServiceImpl implements MLService {
 		Category category = repository.getCategoryByName(name);
 		if (category == null) {
 			category = new Category(name);
-			return repository.store(category);
+			return repository.storeCategory(category);
 		}
 		else {
 			return null;
@@ -40,20 +40,28 @@ public class MLServiceImpl implements MLService {
 
 	@Override
 	public Product createProduct(String name, Float weight, Category category) throws MLException {
-		// TODO Auto-generated method stub
-		return null;
+		Product p = new Product(name, weight, category);
+		return repository.storeProduct(p);
 	}
 
 	@Override
 	public User createUser(String email, String fullname, String password, Date dayOfBirth) throws MLException {
-		// TODO Auto-generated method stub
+		User user = repository.getUserByUsername(email);
+		if (user == null) {
+			user = new User();
+			user.setEmail(email);
+			user.setFullName(fullname);
+			user.setPassword(password);
+			user.setDayOfBirth((java.sql.Date) dayOfBirth);
+			return repository.storeUser(user);
+		}
 		return null;
 	}
 
 	@Override
 	public Provider createProvider(String name, Long cuit) throws MLException {
-		// TODO Auto-generated method stub
-		return null;
+		Provider provider = new Provider(name, cuit);
+		return repository.storeProvider(provider);
 	}
 
 	@Override
@@ -98,8 +106,7 @@ public class MLServiceImpl implements MLService {
 
 	@Override
 	public Optional<Provider> getProviderByCuit(long cuit) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.getProviderByCuit(cuit);
 	}
 
 	@Transactional
@@ -111,7 +118,7 @@ public class MLServiceImpl implements MLService {
 	@Override
 	public Optional<Product> getProductByName(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.getProductByName(name);
 	}
 
 	@Override
@@ -158,8 +165,7 @@ public class MLServiceImpl implements MLService {
 	}
 
 	@Override
-	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate)
-			throws MLException {
+	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate) throws MLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

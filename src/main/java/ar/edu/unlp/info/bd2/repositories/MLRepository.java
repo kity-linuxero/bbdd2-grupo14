@@ -10,6 +10,7 @@ import ar.edu.unlp.info.bd2.model.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class MLRepository {
@@ -43,14 +44,14 @@ public class MLRepository {
 	  }
 	  
 	  /* saves a category and returns it */
-	  public Category store(Category category){
+	  public Category storeCategory(Category category){
 	    sessionFactory.getCurrentSession().save(category);
 	    return category;
 	  }
 
 	public Category getCategoryByName(String name) {
-		Session session = sessionFactory.getCurrentSession();
-		String stmt = "SELECT c FROM Category c WHERE c.name = :name";
+	    String stmt = "SELECT p FROM Categories p WHERE p.name = :name";
+	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<Category> query = session.createQuery(stmt, Category.class);
 	    query.setParameter("name", name);
 	    return ((Query<Category>) query).uniqueResult();
@@ -70,6 +71,35 @@ public class MLRepository {
 	
 	public Product getProductById(Long id) {
 		return sessionFactory.getCurrentSession().get(Product.class, id);
+	}
+	
+  /* saves a provider and returns it */
+    public Provider storeProvider(Provider provider){
+      sessionFactory.getCurrentSession().save(provider);
+      return provider;
+    }
+    
+    public Provider getProviderByCuit(Long cuit) {
+	    String stmt = "SELECT p FROM Providers p WHERE p.cuit = :cuit";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<Provider> query = session.createQuery(stmt, Provider.class);
+	    query.setParameter("cuit", cuit);
+	    return ((Query<Provider>) query).uniqueResult();
+    	
+    }
+    
+    /* saves a provider and returns it */
+    public Product storeProduct(Product product){
+      sessionFactory.getCurrentSession().save(product);
+      return product;
+    }
+
+	public Optional<Product> getProductByName(String name) {
+	    String stmt = "SELECT p FROM Products p WHERE p.name = :name";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<Product> query = session.createQuery(stmt, Product.class);
+	    query.setParameter("namet", name);
+	    return ((Query<Product>) query).uniqueResult();
 	}
 	  
 	  

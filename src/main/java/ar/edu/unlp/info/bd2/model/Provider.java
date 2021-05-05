@@ -3,15 +3,16 @@ package ar.edu.unlp.info.bd2.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name="providers")
 public class Provider {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String cuit;
+	private Long cuit;
 	
-	public Provider(String name, String cuit) {
+	public Provider(String name, Long cuit) {
 		this.name = name;
 		this.cuit = cuit;
 	}
@@ -28,11 +29,11 @@ public class Provider {
 		this.name = name;
 	}
 
-	public String getCuit() {
+	public Long getCuit() {
 		return cuit;
 	}
 
-	public void setCuit(String cuit) {
+	public void setCuit(Long cuit) {
 		this.cuit = cuit;
 	}
 	
