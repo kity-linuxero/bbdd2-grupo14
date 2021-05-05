@@ -2,8 +2,8 @@ package ar.edu.unlp.info.bd2.services;
 
 import ar.edu.unlp.info.bd2.config.AppConfig;
 import ar.edu.unlp.info.bd2.config.HibernateConfiguration;
+import ar.edu.unlp.info.bd2.exceptions.MLException;
 import ar.edu.unlp.info.bd2.model.*;
-import ar.edu.unlp.info.bd2.repositories.MLException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -47,6 +47,30 @@ public class MLRepository {
 	    sessionFactory.getCurrentSession().save(category);
 	    return category;
 	  }
+
+	public Category getCategoryByName(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		String stmt = "SELECT c FROM Category c WHERE c.name = :name";
+	    TypedQuery<Category> query = session.createQuery(stmt, Category.class);
+	    query.setParameter("name", name);
+	    return ((Query<Category>) query).uniqueResult();
+	}
+	
+	public Category getCategorybyId(Long id) {
+		return sessionFactory.getCurrentSession().get(Category.class, id);
+	}
+
+	public User getUserById(Long id) {
+		return sessionFactory.getCurrentSession().get(User.class, id);
+	}
+	
+	public Provider getProviderById(Long id) {
+		return sessionFactory.getCurrentSession().get(Provider.class, id);
+	}
+	
+	public Product getProductById(Long id) {
+		return sessionFactory.getCurrentSession().get(Product.class, id);
+	}
 	  
 	  
 
