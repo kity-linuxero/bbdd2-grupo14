@@ -12,11 +12,12 @@ public class ProductOnSale {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Product product;
 	private Provider provider;
-	private float price;
+	private Float price;
 	private Long id;
 	private Date initialDate;
+	private Date finalDate;
 	
-	public ProductOnSale(Product product, Provider provider, float price, Date id) {
+	public ProductOnSale(Product product, Provider provider, Float price, Date id) {
 		super();
 		this.product = product;
 		this.provider = provider;
@@ -40,11 +41,11 @@ public class ProductOnSale {
 		this.provider = provider;
 	}
 
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
@@ -58,6 +59,14 @@ public class ProductOnSale {
 
 	public void setInitialDate(Date initialDate) {
 		this.initialDate = initialDate;
+	}
+
+	public Date getFinalDate() {
+		return finalDate;
+	}
+
+	public void setFinalDate(Date finalDate) {
+		this.finalDate = finalDate;
 	}
 	
 }

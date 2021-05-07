@@ -10,7 +10,7 @@ public class User {
 	private Long id;
 	private String email;
 	private String password;
-	private String fullName;
+	private String fullname;
 	private Date dayOfBirth;
 	//private Purchase[] purchases; //Por ahora parece que no lo pide
 	// private Payment payment;
@@ -27,11 +27,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getFullName() {
-		return fullName;
+	public String getFullname() {
+		return fullname;
 	}
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setFullname(String fullName) {
+		this.fullname = fullName;
 	}
 	public Date getDayOfBirth() {
 		return dayOfBirth;

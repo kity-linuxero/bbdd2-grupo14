@@ -13,6 +13,7 @@ public class PriceHistory {
 	private Date dateFrom;
 	private Date dateTo;
 	private Provider provider;
+	
 	private Product product;
 	
 	public PriceHistory(Date dateFrom, Date dateTo, Provider provider, Product product) {

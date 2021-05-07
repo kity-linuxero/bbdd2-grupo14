@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.hibernate.query.Query;
 
 public class MLRepository {
 	
@@ -99,7 +100,7 @@ public class MLRepository {
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<Product> query = session.createQuery(stmt, Product.class);
 	    query.setParameter("namet", name);
-	    return ((Query<Product>) query).uniqueResult();
+	    return Optional.of(((Query<Product>) query).uniqueResult());
 	}
 	  
 	  

@@ -17,13 +17,13 @@ public class Purchase {
 	private DeliveryMethod deliveryMethod;
 	private PaymentMethod paymentMethod;
 	private String address;
-	private float coordX;
-	private float coordY;
+	private Float coordX;
+	private Float coordY;
 	private Date dateOfPurchase;
-	//private float shipping;
+	//private Float shipping;
 	
 	public Purchase(ProductOnSale productOnSale, Integer quantity, User client, DeliveryMethod deliveryMethod,
-			PaymentMethod paymentMethod, String address, float coordX, float coordY, Date dateOfPurchase) {
+			PaymentMethod paymentMethod, String address, Float coordX, Float coordY, Date dateOfPurchase) {
 		super();
 		this.productOnSale = productOnSale;
 		this.quantity = quantity;
@@ -84,19 +84,19 @@ public class Purchase {
 		this.address = address;
 	}
 
-	public float getCoordX() {
+	public Float getCoordX() {
 		return coordX;
 	}
 
-	public void setCoordX(float coordX) {
+	public void setCoordX(Float coordX) {
 		this.coordX = coordX;
 	}
 
-	public float getCoordY() {
+	public Float getCoordY() {
 		return coordY;
 	}
 
-	public void setCoordY(float coordY) {
+	public void setCoordY(Float coordY) {
 		this.coordY = coordY;
 	}
 
@@ -112,7 +112,7 @@ public class Purchase {
 		return id;
 	}
 	
-	public float getAmount(){
+	public Float getAmount(){
 		return (this.getProductOnSale().getPrice()*this.getQuantity()) + this.deliveryMethod.getCost();
 	}
 	

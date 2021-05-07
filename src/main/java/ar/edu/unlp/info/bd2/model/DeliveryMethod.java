@@ -11,10 +11,10 @@ public class DeliveryMethod {
 	private Long id;
 	private String name;
 	private Integer cost;
-	private float startWeight;
-	private float endWeight;
+	private Float startWeight;
+	private Float endWeight;
 	
-	public DeliveryMethod(String name, Integer cost, float startWeight, float endWeight) {
+	public DeliveryMethod(String name, Integer cost, Float startWeight, Float endWeight) {
 		this.name = name;
 		this.cost = cost;
 		this.startWeight = startWeight;
@@ -37,19 +37,19 @@ public class DeliveryMethod {
 		this.cost = cost;
 	}
 
-	public float getStartWeight() {
+	public Float getStartWeight() {
 		return startWeight;
 	}
 
-	public void setStartWeight(float startWeight) {
+	public void setStartWeight(Float startWeight) {
 		this.startWeight = startWeight;
 	}
 
-	public float getEndWeight() {
+	public Float getEndWeight() {
 		return endWeight;
 	}
 
-	public void setEndWeight(float endWeight) {
+	public void setEndWeight(Float endWeight) {
 		this.endWeight = endWeight;
 	}
 

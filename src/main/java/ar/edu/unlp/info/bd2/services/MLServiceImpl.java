@@ -50,7 +50,7 @@ public class MLServiceImpl implements MLService {
 		if (user == null) {
 			user = new User();
 			user.setEmail(email);
-			user.setFullName(fullname);
+			user.setFullname(fullname);
 			user.setPassword(password);
 			user.setDayOfBirth((java.sql.Date) dayOfBirth);
 			return repository.storeUser(user);
@@ -71,25 +71,25 @@ public class MLServiceImpl implements MLService {
 		return null;
 	}
 
-	@Override
-	public CreditCardPayment createCreditCardPayment(String name, String brand, Long number, Date expiry, Integer cvv,
-			String owner) throws MLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public CreditCardPayment createCreditCardPayment(String name, String brand, Long number, Date expiry, Integer cvv,
+//			String owner) throws MLException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
-	@Override
-	public OnDeliveryPayment createOnDeliveryPayment(String name, Float promisedAmount) throws MLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public OnDeliveryPayment createOnDeliveryPayment(String name, Float promisedAmount) throws MLException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
-	@Override
-	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate)
-			throws MLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate)
+//			throws MLException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
     @Transactional
     /* returns an user by a given email, null otherwise */
@@ -106,13 +106,13 @@ public class MLServiceImpl implements MLService {
 
 	@Override
 	public Optional<Provider> getProviderByCuit(long cuit) {
-		return repository.getProviderByCuit(cuit);
+		return Optional.of(repository.getProviderByCuit(cuit));
 	}
 
 	@Transactional
 	public Optional<Category> getCategoryByName(String name) {
 		// TODO Auto-generated method stub
-		return repository.getCategoryByName(name);
+		return Optional.of(repository.getCategoryByName(name));
 	}
 
 	@Override
@@ -121,11 +121,11 @@ public class MLServiceImpl implements MLService {
 		return repository.getProductByName(name);
 	}
 
-	@Override
-	public ProductOnSale getProductOnSaleById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public ProductOnSale getProductOnSaleById(Long id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public Optional<DeliveryMethod> getDeliveryMethodByName(String name) {
@@ -151,6 +151,33 @@ public class MLServiceImpl implements MLService {
 		return null;
 	}
 
+//	@Override
+//	public CreditCardPayment createCreditCardPayment(String name, String brand, Long number, Date expiry, Integer cvv,
+//			String owner) throws MLException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+//	@Override
+//	public OnDeliveryPayment createOnDeliveryPayment(String name, Float promisedAmount) throws MLException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+//	@Override
+//	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate) throws MLException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+	@Override
+	public Purchase createPurchase(ProductOnSale productOnSale, Integer quantity, User client,
+			DeliveryMethod deliveryMethod, PaymentMethod paymentMethod, String address, Float coordX, Float coordY,
+			Date dateOfPurchase) throws MLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public CreditCardPayment createCreditCardPayment(String name, String brand, Long number, Date expiry, Integer cvv,
 			String owner) throws MLException {
@@ -165,15 +192,14 @@ public class MLServiceImpl implements MLService {
 	}
 
 	@Override
-	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate) throws MLException {
+	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate)
+			throws MLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Purchase createPurchase(ProductOnSale productOnSale, Integer quantity, User client,
-			DeliveryMethod deliveryMethod, PaymentMethod paymentMethod, String address, Float coordX, Float coordY,
-			Date dateOfPurchase) throws MLException {
+	public Optional<User> getUserByEmail(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -183,6 +209,12 @@ public class MLServiceImpl implements MLService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+//	@Override
+//	public ProductOnSale getProductOnSaleById(Long id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 	
 	

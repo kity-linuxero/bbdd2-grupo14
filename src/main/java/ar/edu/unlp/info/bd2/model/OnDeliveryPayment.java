@@ -2,19 +2,19 @@ package ar.edu.unlp.info.bd2.model;
 
 public class OnDeliveryPayment extends PaymentMethod {
 
-	private float promisedAmount;
+	private Float promisedAmount;
 	
-	public OnDeliveryPayment(String name, float promisedAmount) {
+	public OnDeliveryPayment(String name, Float promisedAmount) {
 		super(name);
 		this.name = name;
 		this.promisedAmount = promisedAmount;
 	}
 
-	public float getPromisedAmount() {
+	public Float getPromisedAmount() {
 		return promisedAmount;
 	}
 
-	public void setPromisedAmount(float promisedAmount) {
+	public void setPromisedAmount(Float promisedAmount) {
 		this.promisedAmount = promisedAmount;
 	}
 	

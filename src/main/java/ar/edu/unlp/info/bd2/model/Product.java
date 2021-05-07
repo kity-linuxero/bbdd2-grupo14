@@ -1,5 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -10,12 +12,13 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private float weight;
+	private Float weight;
 	private Category category;
+	private List<ProductOnSale> productsOnSale;
 	
 	public Product(String aName, float weight, Category aCategory) {
 		this.setName(aName);
-		this.setWeight(weight);
+		this.setWeigth(weight);
 		this.setCategory(aCategory);
 	}
 	
@@ -25,10 +28,10 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public float getWeight() {
+	public Float getWeigth() {
 		return weight;
 	}
-	public void setWeight(float weight) {
+	public void setWeigth(Float weight) {
 		this.weight = weight;
 	}
 
@@ -42,6 +45,14 @@ public class Product {
 	
 	public void setCategory(Category aCategory) {
 		category = aCategory;
+	}
+
+	public List<ProductOnSale> getProductsOnSale() {
+		return productsOnSale;
+	}
+
+	public void setProductsOnSale(List<ProductOnSale> productsOnSale) {
+		this.productsOnSale = productsOnSale;
 	}
 
 }
