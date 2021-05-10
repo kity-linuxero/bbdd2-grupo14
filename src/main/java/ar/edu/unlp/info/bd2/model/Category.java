@@ -3,13 +3,13 @@ package ar.edu.unlp.info.bd2.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="categories")
+@Table(name="category")
 public class Category {
-
+	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	@Column(name="name", nullable=false)
+	@Column(name="name")
 	private String name;
 	
 	

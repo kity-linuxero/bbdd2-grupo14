@@ -3,13 +3,15 @@ package ar.edu.unlp.info.bd2.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="providers")
+@Table(name="provider")
 public class Provider {
-	
+	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name="name")
 	private String name;
+	@Column(name="cuit")
 	private Long cuit;
 	
 	public Provider(String name, Long cuit) {

@@ -6,15 +6,21 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="productOnSale")
 public class ProductOnSale {
-	
+	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Product product;
-	private Provider provider;
-	private Float price;
 	private Long id;
+	@Column(name="product")
+	private Product product;
+	@Column(name="provider")
+	private Provider provider;
+	@Column(name="price")
+	private Float price;
+	@Column(name="initialDate")
 	private Date initialDate;
+	@Column(name="finalDate")
 	private Date finalDate;
 	
 	public ProductOnSale(Product product, Provider provider, Float price, Date id) {

@@ -1,7 +1,11 @@
 package ar.edu.unlp.info.bd2.model;
 
-public class OnDeliveryPayment extends PaymentMethod {
+import javax.persistence.Column;
+import javax.persistence.Table;
 
+@Table(name="onDeliveyPayment")
+public class OnDeliveryPayment extends PaymentMethod {
+	@Column(name="promisedAmount")
 	private Float promisedAmount;
 	
 	public OnDeliveryPayment(String name, Float promisedAmount) {

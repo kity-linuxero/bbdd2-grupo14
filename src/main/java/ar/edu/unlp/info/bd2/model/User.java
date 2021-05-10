@@ -7,12 +7,17 @@ import javax.persistence.*;
 @Entity
 @Table(name="users")
 public class User {
+	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name="email")
 	private String email;
+	@Column(name="password")
 	private String password;
+	@Column(name="fullname")
 	private String fullname;
+	@Column(name="dayOfBirth")
 	private Date dayOfBirth;
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)

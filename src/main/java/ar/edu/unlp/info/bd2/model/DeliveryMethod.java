@@ -4,14 +4,19 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="deliveryMethod")
 public class DeliveryMethod {
-	
+	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name="name")
 	private String name;
+	@Column(name="cost")
 	private Integer cost;
+	@Column(name="startWeight")
 	private Float startWeight;
+	@Column(name="endWeight")
 	private Float endWeight;
 	
 	public DeliveryMethod(String name, Integer cost, Float startWeight, Float endWeight) {

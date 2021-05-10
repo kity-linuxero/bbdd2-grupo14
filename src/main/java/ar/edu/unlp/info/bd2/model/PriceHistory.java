@@ -7,15 +7,18 @@ import org.springframework.context.annotation.Bean;
 
 
 @Entity
-//@Table(name="priceHistories")
+@Table(name="priceHistory")
 public class PriceHistory {
 
 	@Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name="DateFrom")
 	private Date dateFrom;
+	@Column(name="dateTo")
 	private Date dateTo;
+	@Column(name="provider")
 	private Provider provider;
 	
 	@Column(name="products")

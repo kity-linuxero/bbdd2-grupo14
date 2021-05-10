@@ -6,13 +6,16 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="purchase")
 public class Purchase {
 	
 	@Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name="productOnSale")
 	private ProductOnSale productOnSale;
+	@Column(name="quantity")
 	private Integer quantity;
 	
 	@ManyToOne

@@ -6,13 +6,17 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="product")
 public class Product {
-	
+	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name="name")
 	private String name;
+	@Column(name="weight")
 	private Float weight;
+	@Column(name="category")
 	private Category category;
 	private List<ProductOnSale> productsOnSale;
 	
