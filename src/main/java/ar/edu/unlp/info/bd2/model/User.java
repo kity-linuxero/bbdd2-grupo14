@@ -1,6 +1,8 @@
 package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.*;
 @Entity
 @Table(name="users")
@@ -12,7 +14,11 @@ public class User {
 	private String password;
 	private String fullname;
 	private Date dayOfBirth;
-	//private Purchase[] purchases; //Por ahora parece que no lo pide
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name="user_id")
+	private List<Purchase> purshases;
+	
 	// private Payment payment;
 	
 	public String getEmail() {

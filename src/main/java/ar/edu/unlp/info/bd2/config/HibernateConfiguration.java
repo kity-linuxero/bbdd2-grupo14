@@ -35,7 +35,7 @@ public class HibernateConfiguration {
         dataSource.setUsername("grupo14");
         dataSource.setPassword("pa$$word");
         
-        //HARDCODING:
+//        HARDCODING:
 //        dataSource.setUrl("jdbc:mysql://localhost:3306/grupo14?useSSL=false");
 //        dataSource.setUsername("root");
 //        dataSource.setPassword("bd2");

@@ -3,17 +3,24 @@ package ar.edu.unlp.info.bd2.model;
 import java.sql.Date;
 
 import javax.persistence.*;
+import org.springframework.context.annotation.Bean;
 
 
 @Entity
+//@Table(name="priceHistories")
 public class PriceHistory {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Column
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Date dateFrom;
 	private Date dateTo;
 	private Provider provider;
 	
+	@Column(name="products")
+    @OneToOne
+    @JoinColumn(name = "cantProducto")
 	private Product product;
 	
 	public PriceHistory(Date dateFrom, Date dateTo, Provider provider, Product product) {

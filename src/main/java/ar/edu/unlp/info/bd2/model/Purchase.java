@@ -8,12 +8,18 @@ import javax.persistence.*;
 @Entity
 public class Purchase {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private ProductOnSale productOnSale;
 	private Integer quantity;
+	
+	@ManyToOne
+	@Column(name="client")
+	@JoinColumn(name="user_id")
 	private User client;
+	
 	private DeliveryMethod deliveryMethod;
 	private PaymentMethod paymentMethod;
 	private String address;
