@@ -16,8 +16,11 @@ public class Product {
 	private String name;
 	@Column(name="weight")
 	private Float weight;
-	@Column(name="category")
+	
+	@ManyToOne
+	@JoinColumn(name="category_id")
 	private Category category;
+	
 	private List<ProductOnSale> productsOnSale;
 	
 	public Product(String aName, float weight, Category aCategory) {

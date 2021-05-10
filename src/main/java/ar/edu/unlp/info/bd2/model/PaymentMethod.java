@@ -1,4 +1,6 @@
 package ar.edu.unlp.info.bd2.model;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,10 @@ public abstract class PaymentMethod {
 	private Long id;
 	@Column(name="name")
 	protected String name;
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name="paymentMethod_id")
+	private List<Purchase> purshases;
 
 	public PaymentMethod(String name) {
 		this.name = name;

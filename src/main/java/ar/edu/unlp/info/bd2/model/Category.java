@@ -1,5 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,9 @@ public class Category {
     private Long id;
 	@Column(name="name")
 	private String name;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name="category_id")
+	private List<Product> products;
 	
 	
 	public Category(String name) {

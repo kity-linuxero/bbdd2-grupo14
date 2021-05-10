@@ -19,15 +19,23 @@ public class Purchase {
 	private Integer quantity;
 	
 	@ManyToOne
-	@Column(name="client")
 	@JoinColumn(name="user_id")
 	private User client;
 	
+	@Column(name="deliveryMethod")
 	private DeliveryMethod deliveryMethod;
+	
+	@ManyToOne
+	@JoinColumn(name="paymentMethod_id")
 	private PaymentMethod paymentMethod;
+	
+	@Column(name="address")
 	private String address;
+	@Column(name="coordX")
 	private Float coordX;
+	@Column(name="coordY")
 	private Float coordY;
+	@Column(name="dateOfPurchase")
 	private Date dateOfPurchase;
 	//private Float shipping;
 	
