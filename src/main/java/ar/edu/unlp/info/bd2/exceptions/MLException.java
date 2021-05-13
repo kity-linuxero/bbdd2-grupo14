@@ -5,5 +5,9 @@ public class MLException extends Exception {
 	public MLException(String string) {
 		super("App Exception: "+string);
 	}
+	
+	public MLException() {
+		super("App Exception!");
+	}
 
 }

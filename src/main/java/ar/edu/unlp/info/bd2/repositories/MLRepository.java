@@ -27,7 +27,7 @@ public class MLRepository {
 	  
 	  /* Retorna true si un usuario aún no está en uso.  */
 	  public boolean uniqueUsername(String username){
-	    String stmt = "SELECT u FROM User u WHERE u.username like :username";
+	    String stmt = "from User u where u.email like :username";
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<User> query = session.createQuery(stmt, User.class);
 	    query.setParameter("username", username);
@@ -36,12 +36,12 @@ public class MLRepository {
 	  }
 	  
 	  /* Retorna un usuario existente por mail, nulo de otra forma. */
-	  public User getUserByUsername(String email) {
-	    String stmt = "from User u where username like :email";
+	  public Optional<User> getUserByUsername(String email) {
+	    String stmt = "from User u where u.email like :email";
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<User> query = session.createQuery(stmt, User.class);
 	    query.setParameter("email", email);
-	    return ((Query<User>) query).uniqueResult();
+	    return Optional.ofNullable(((Query<User>) query).uniqueResult());
 	  }
 	  
 	  /* saves a category and returns it */
@@ -81,7 +81,7 @@ public class MLRepository {
     }
     
     public Provider getProviderByCuit(Long cuit) {
-	    String stmt = "SELECT p FROM Providers p WHERE p.cuit = :cuit";
+	    String stmt = "from Provider p WHERE p.cuit like :cuit";
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<Provider> query = session.createQuery(stmt, Provider.class);
 	    query.setParameter("cuit", cuit);
@@ -96,11 +96,25 @@ public class MLRepository {
     }
 
 	public Optional<Product> getProductByName(String name) {
-	    String stmt = "SELECT p FROM Products p WHERE p.name = :name";
+	    String stmt = "FROM Product p WHERE p.name like :name";
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<Product> query = session.createQuery(stmt, Product.class);
-	    query.setParameter("namet", name);
+	    query.setParameter("name", name);
 	    return Optional.of(((Query<Product>) query).uniqueResult());
+	}
+
+	
+	public Optional<CreditCardPayment> getCreditCardPaymentByNumber(Long number) {
+	    String stmt = "FROM CreditCardPayment ccp WHERE ccp.number like :number";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<CreditCardPayment> query = session.createQuery(stmt, CreditCardPayment.class);
+	    query.setParameter("number", number);
+	    return Optional.of(((Query<CreditCardPayment>) query).uniqueResult());
+	}
+
+	public CreditCardPayment storeCreditCardPayment(CreditCardPayment credit) {
+	      sessionFactory.getCurrentSession().save(credit);
+	      return credit;
 	}
 	  
 	  

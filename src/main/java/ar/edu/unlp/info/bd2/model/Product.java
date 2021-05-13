@@ -66,4 +66,8 @@ public class Product {
 		category = aCategory;
 	}
 
+	public Set<ProductOnSale> getProductsOnSale() {
+		return this.productOnSales;
+	}
+
 }

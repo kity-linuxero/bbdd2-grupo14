@@ -1,6 +1,6 @@
 package ar.edu.unlp.info.bd2.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -49,7 +49,7 @@ public class User {
 	public Date getDayOfBirth() {
 		return dayOfBirth;
 	}
-	public void setDayOfBirth(Date dayOfBirth) {
+	public void setDayOfBirth(java.util.Date dayOfBirth) {
 		this.dayOfBirth = dayOfBirth;
 	}
 	public Long getId() {

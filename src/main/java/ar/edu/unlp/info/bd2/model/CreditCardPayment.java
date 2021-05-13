@@ -1,17 +1,17 @@
 package ar.edu.unlp.info.bd2.model;
 
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue("c")
+@DiscriminatorValue("2")
 public class CreditCardPayment extends PaymentMethod{
 	
 	@Column(name="brand")
 	private String brand;
 	
 	@Column(name="number")
-	private String number;
+	private Long number;
 	
 	@Column(name="expiry")
 	private Date expiry;
@@ -22,9 +22,9 @@ public class CreditCardPayment extends PaymentMethod{
 	@Column(name="owner")
 	private String owner;
 	
-	public CreditCardPayment(String name, String brand, String number, Date expiry, Integer cvv, String owner) {
+	
+	public CreditCardPayment(String name, String brand, Long number, Date expiry, Integer cvv, String owner) {
 		super(name);
-		this.name = name;
 		this.brand = brand;
 		this.number = number;
 		this.expiry = expiry;
@@ -40,11 +40,11 @@ public class CreditCardPayment extends PaymentMethod{
 		this.brand = brand;
 	}
 
-	public String getNumber() {
+	public Long getNumber() {
 		return number;
 	}
 
-	public void setNumber(String number) {
+	public void setNumber(Long number) {
 		this.number = number;
 	}
 

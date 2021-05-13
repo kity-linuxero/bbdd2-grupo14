@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name="paymentMethod")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "payment_type",
-discriminatorType = DiscriminatorType.CHAR)
+discriminatorType = DiscriminatorType.INTEGER)
 public abstract class PaymentMethod {
 	
 	@Column

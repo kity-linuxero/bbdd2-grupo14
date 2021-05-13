@@ -3,7 +3,7 @@ package ar.edu.unlp.info.bd2.model;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue("d")
+@DiscriminatorValue("1")
 public class OnDeliveryPayment extends PaymentMethod {
 	
 	@Column(name="promisedAmount")
