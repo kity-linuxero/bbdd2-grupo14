@@ -1,9 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
-import java.util.List;
-
+import java.util.Set;
 import javax.persistence.*;
-
 
 @Entity
 @Table(name="product")
@@ -12,8 +10,10 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(name="name")
 	private String name;
+	
 	@Column(name="weight")
 	private Float weight;
 	
@@ -21,7 +21,19 @@ public class Product {
 	@JoinColumn(name="category_id")
 	private Category category;
 	
-	private List<ProductOnSale> productsOnSale;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="product_id")
+	private Set<PriceHistory> priceHistories;
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="product_os")
+	private Set<ProductOnSale> productOnSales;
+	
+	@ManyToMany(mappedBy = "products")
+	private Set<Purchase>purchases;
+	
+	@ManyToMany
+	private Set<Provider>providers;
 	
 	public Product(String aName, float weight, Category aCategory) {
 		this.setName(aName);
@@ -52,14 +64,6 @@ public class Product {
 	
 	public void setCategory(Category aCategory) {
 		category = aCategory;
-	}
-
-	public List<ProductOnSale> getProductsOnSale() {
-		return productsOnSale;
-	}
-
-	public void setProductsOnSale(List<ProductOnSale> productsOnSale) {
-		this.productsOnSale = productsOnSale;
 	}
 
 }

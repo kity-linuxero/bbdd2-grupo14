@@ -1,20 +1,24 @@
 package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
-
-@Table(name="creditCardPayment")
+@Entity
+@DiscriminatorValue("c")
 public class CreditCardPayment extends PaymentMethod{
+	
 	@Column(name="brand")
 	private String brand;
+	
 	@Column(name="number")
 	private String number;
+	
 	@Column(name="expiry")
 	private Date expiry;
+	
 	@Column(name="cvv")
 	private Integer cvv;
+	
 	@Column(name="owner")
 	private String owner;
 	

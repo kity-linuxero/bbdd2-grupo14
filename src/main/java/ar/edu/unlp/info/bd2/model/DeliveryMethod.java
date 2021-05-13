@@ -1,23 +1,33 @@
 package ar.edu.unlp.info.bd2.model;
 
-import javax.persistence.*;
+import java.util.Set;
 
+import javax.persistence.*;
 
 @Entity
 @Table(name="deliveryMethod")
 public class DeliveryMethod {
+	
 	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(name="name")
 	private String name;
+	
 	@Column(name="cost")
 	private Integer cost;
+	
 	@Column(name="startWeight")
 	private Float startWeight;
+	
 	@Column(name="endWeight")
 	private Float endWeight;
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="deliveryMethod_id")
+	private Set<Purchase> purchases;
 	
 	public DeliveryMethod(String name, Integer cost, Float startWeight, Float endWeight) {
 		this.name = name;

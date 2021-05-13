@@ -1,9 +1,8 @@
 package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
-
+import java.util.Set;
 import javax.persistence.*;
-
 
 @Entity
 @Table(name="purchase")
@@ -13,8 +12,11 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="productOnSale")
+	
+	@ManyToOne
+	@JoinColumn(name="productOnSale_id")
 	private ProductOnSale productOnSale;
+	
 	@Column(name="quantity")
 	private Integer quantity;
 	
@@ -22,7 +24,8 @@ public class Purchase {
 	@JoinColumn(name="user_id")
 	private User client;
 	
-	@Column(name="deliveryMethod")
+	@ManyToOne
+	@JoinColumn(name="deliveryMethod_id")
 	private DeliveryMethod deliveryMethod;
 	
 	@ManyToOne
@@ -31,14 +34,22 @@ public class Purchase {
 	
 	@Column(name="address")
 	private String address;
+	
 	@Column(name="coordX")
 	private Float coordX;
+	
 	@Column(name="coordY")
 	private Float coordY;
+	
 	@Column(name="dateOfPurchase")
 	private Date dateOfPurchase;
-	//private Float shipping;
 	
+	@ManyToMany
+	private Set<Product>products;
+	
+	@ManyToMany
+	private Set<Provider>providers;
+			
 	public Purchase(ProductOnSale productOnSale, Integer quantity, User client, DeliveryMethod deliveryMethod,
 			PaymentMethod paymentMethod, String address, Float coordX, Float coordY, Date dateOfPurchase) {
 		super();
@@ -133,5 +144,4 @@ public class Purchase {
 		return (this.getProductOnSale().getPrice()*this.getQuantity()) + this.deliveryMethod.getCost();
 	}
 	
-
 }

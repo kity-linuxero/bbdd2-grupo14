@@ -1,21 +1,23 @@
 package ar.edu.unlp.info.bd2.model;
 
-import java.util.List;
-
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
 @Table(name="category")
 public class Category {
+	
 	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	
 	@Column(name="name")
 	private String name;
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id")
-	private List<Product> products;
+	private Set<Product> products;
 	
 	
 	public Category(String name) {
@@ -35,8 +37,4 @@ public class Category {
 		return name;
 	}
 	
-	
-	
-	
-
 }

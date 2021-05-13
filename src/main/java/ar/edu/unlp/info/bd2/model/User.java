@@ -1,9 +1,9 @@
 package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
-import java.util.List;
-
+import java.util.Set;
 import javax.persistence.*;
+
 @Entity
 @Table(name="users")
 public class User {
@@ -11,21 +11,23 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(name="email")
 	private String email;
+	
 	@Column(name="password")
 	private String password;
+	
 	@Column(name="fullname")
 	private String fullname;
+	
 	@Column(name="dayOfBirth")
 	private Date dayOfBirth;
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
-	private List<Purchase> purshases;
-	
-	// private Payment payment;
-	
+	private Set<Purchase> purshases;
+		
 	public String getEmail() {
 		return email;
 	}
@@ -53,13 +55,5 @@ public class User {
 	public Long getId() {
 		return id;
 	}
-	
-	/*public Purchase[] getPurchases() {
-		return purchases;
-	}
-	public void setPurchases(Purchase[] purchases) {
-		this.purchases = purchases;
-	}
-	*/
 
 }

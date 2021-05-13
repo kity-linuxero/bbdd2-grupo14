@@ -1,9 +1,9 @@
 package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
+import java.util.Set;
 
 import javax.persistence.*;
-
 
 @Entity
 @Table(name="productOnSale")
@@ -12,23 +12,33 @@ public class ProductOnSale {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="product")
+	
+	@ManyToOne
+	@JoinColumn(name="product_os")
 	private Product product;
-	@Column(name="provider")
+	
+	@ManyToOne
+	@JoinColumn(name="provider_os")
 	private Provider provider;
+	
 	@Column(name="price")
 	private Float price;
+	
 	@Column(name="initialDate")
 	private Date initialDate;
+	
 	@Column(name="finalDate")
 	private Date finalDate;
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="productOnSale_id")
+	private Set<Purchase> purchases;
 	
 	public ProductOnSale(Product product, Provider provider, Float price, Date id) {
 		super();
 		this.product = product;
 		this.provider = provider;
 		this.price = price;
-		//this.id = id;
 	}
 
 	public Product getProduct() {
