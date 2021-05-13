@@ -37,19 +37,19 @@ public class MLServiceTestCase {
   }
     
     
-//    @Test
-//    public void testCreateCategory() throws MLException {
-//        Category c = this.service.createCategory("Hogar");
-//        assertNotNull(c.getId());
-//        assertEquals("Hogar",c.getName());
-//        Optional<Category> oc = this.service.getCategoryByName("Hogar");
-//        if (! oc.isPresent()) {
-//            throw new MLException("Category not found");
-//        }
-//        Category cat = oc.get();
-//        assertNotNull(cat.getId());
-//        assertEquals("Hogar",cat.getName());
-//    }
+    @Test
+    public void testCreateCategory() throws MLException {
+        Category c = this.service.createCategory("Hogar");
+        assertNotNull(c.getId());
+        assertEquals("Hogar",c.getName());
+        Optional<Category> oc = this.service.getCategoryByName("Hogar");
+        if (! oc.isPresent()) {
+            throw new MLException("Category not found");
+        }
+        Category cat = oc.get();
+        assertNotNull(cat.getId());
+        assertEquals("Hogar",cat.getName());
+    }
 //    
 //    @Test
 //    public void testCreateUser() throws MLException{

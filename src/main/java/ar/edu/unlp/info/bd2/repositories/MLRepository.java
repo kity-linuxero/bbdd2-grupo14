@@ -27,7 +27,7 @@ public class MLRepository {
 	  
 	  /* Retorna true si un usuario aún no está en uso.  */
 	  public boolean uniqueUsername(String username){
-	    String stmt = "SELECT u FROM User u WHERE u.username = :username";
+	    String stmt = "SELECT u FROM User u WHERE u.username like :username";
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<User> query = session.createQuery(stmt, User.class);
 	    query.setParameter("username", username);
@@ -37,7 +37,7 @@ public class MLRepository {
 	  
 	  /* Retorna un usuario existente por mail, nulo de otra forma. */
 	  public User getUserByUsername(String email) {
-	    String stmt = "SELECT u FROM User u WHERE u.username = :email";
+	    String stmt = "from User u where username like :email";
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<User> query = session.createQuery(stmt, User.class);
 	    query.setParameter("email", email);
@@ -51,11 +51,11 @@ public class MLRepository {
 	  }
 
 	public Category getCategoryByName(String name) {
-	    String stmt = "SELECT p FROM Categories p WHERE p.name = :name";
+	    String stmt = "from Category where name like :name ";
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<Category> query = session.createQuery(stmt, Category.class);
 	    query.setParameter("name", name);
-	    return ((Query<Category>) query).uniqueResult();
+	    return ((Query<Category>) query).uniqueResult();	
 	}
 	
 	public Category getCategorybyId(Long id) {

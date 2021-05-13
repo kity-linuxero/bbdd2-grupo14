@@ -4,7 +4,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name="category")
+@Table(name="categories")
 public class Category {
 	
 	@Column
@@ -17,8 +17,7 @@ public class Category {
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id")
-	private Set<Product> products;
-	
+	private Set<Product> products;	
 	
 	public Category(String name) {
 		this.name = name;

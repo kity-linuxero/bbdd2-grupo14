@@ -2,7 +2,6 @@ package ar.edu.unlp.info.bd2.model;
 
 import java.sql.Date;
 import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
@@ -34,11 +33,12 @@ public class ProductOnSale {
 	@JoinColumn(name="productOnSale_id")
 	private Set<Purchase> purchases;
 	
-	public ProductOnSale(Product product, Provider provider, Float price, Date id) {
+	public ProductOnSale(Product product, Provider provider, Float price, Date initialDate) {
 		super();
 		this.product = product;
 		this.provider = provider;
 		this.price = price;
+		this.initialDate = initialDate;
 	}
 
 	public Product getProduct() {
