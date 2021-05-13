@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="category")
+@Table(name="categories")
 public class Category {
 	@Column
 	@Id
@@ -13,9 +13,9 @@ public class Category {
     private Long id;
 	@Column(name="name")
 	private String name;
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinColumn(name="category_id")
-	private List<Product> products;
+//	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//	@JoinColumn(name="category_id")
+//	private List<Product> products;
 	
 	
 	public Category(String name) {

@@ -28,7 +28,7 @@ public class ProductOnSale {
 		this.product = product;
 		this.provider = provider;
 		this.price = price;
-		//this.id = id;
+//		this.id = id;
 	}
 
 	public Product getProduct() {
