@@ -100,7 +100,7 @@ public class MLRepository {
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<Product> query = session.createQuery(stmt, Product.class);
 	    query.setParameter("name", name);
-	    return Optional.of(((Query<Product>) query).uniqueResult());
+	    return Optional.ofNullable(((Query<Product>) query).uniqueResult());
 	}
 
 	
@@ -109,7 +109,7 @@ public class MLRepository {
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<CreditCardPayment> query = session.createQuery(stmt, CreditCardPayment.class);
 	    query.setParameter("number", number);
-	    return Optional.of(((Query<CreditCardPayment>) query).uniqueResult());
+	    return Optional.ofNullable(((Query<CreditCardPayment>) query).uniqueResult());
 	}
 
 	public CreditCardPayment storeCreditCardPayment(CreditCardPayment credit) {
@@ -122,9 +122,10 @@ public class MLRepository {
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<DeliveryMethod> query = session.createQuery(stmt, DeliveryMethod.class);
 	    query.setParameter("name", name);
-	    return Optional.of(((Query<DeliveryMethod>) query).uniqueResult());
+	    return Optional.ofNullable(((Query<DeliveryMethod>) query).uniqueResult());
 	}
 
+	//public Optional<DeliveryMethod> storeDeliveryMethod(DeliveryMethod deliveryMethod) {
 	public DeliveryMethod storeDeliveryMethod(DeliveryMethod deliveryMethod) {
 	      sessionFactory.getCurrentSession().save(deliveryMethod);
 	      return deliveryMethod;
@@ -135,7 +136,7 @@ public class MLRepository {
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<OnDeliveryPayment> query = session.createQuery(stmt, OnDeliveryPayment.class);
 	    query.setParameter("name", name);
-	    return Optional.of(((Query<OnDeliveryPayment>) query).uniqueResult());
+	    return Optional.ofNullable(((Query<OnDeliveryPayment>) query).uniqueResult());
 	}
 
 	public Optional<Purchase> getPurchaseById(Long id) {
@@ -166,7 +167,7 @@ public class MLRepository {
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<ProductOnSale> query = session.createQuery(stmt, ProductOnSale.class);
 	    query.setParameter("id", id);
-	    return Optional.of(((Query<ProductOnSale>) query).uniqueResult());
+	    return Optional.ofNullable(((Query<ProductOnSale>) query).uniqueResult());
 	}
 
 	public Optional<CreditCardPayment> getCreditCardPaymentByName(String name) {

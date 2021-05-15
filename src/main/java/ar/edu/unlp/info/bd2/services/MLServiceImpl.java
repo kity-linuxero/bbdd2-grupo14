@@ -50,7 +50,7 @@ public class MLServiceImpl implements MLService {
 	@Override
 	public User createUser(String email, String fullname, String password, Date dayOfBirth) throws MLException {
 		Optional <User> user = repository.getUserByUsername(email);
-		if (user.isPresent()) {
+		if (!user.isPresent()) {
 			User u = new User();
 			u.setEmail(email);
 			u.setFullname(fullname);
@@ -59,7 +59,7 @@ public class MLServiceImpl implements MLService {
 			u.setDayOfBirth((java.util.Date) dayOfBirth);
 			return repository.storeUser(u);
 		}
-		throw new MLException("User exists!");
+		throw new MLException("Constraint Violation");
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class MLServiceImpl implements MLService {
 			DeliveryMethod deliveryMethod = new DeliveryMethod(name, cost, startWeight, endWeight);
 			return repository.storeDeliveryMethod(deliveryMethod);
 		}else
-			throw new MLException("Product exists!");
+			throw new MLException("método de delivery no válido");
 		
 	}
 
@@ -142,12 +142,6 @@ public class MLServiceImpl implements MLService {
 		Purchase pur = new Purchase(productOnSale, quantity, client, deliveryMethod,paymentMethod, address, coordX, coordY, dateOfPurchase);
 			return repository.storePurchase(pur);
 	}
-
-//	@Override
-//	public Optional<User> getUserByEmail(String email) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	@Override
 	public CreditCardPayment createCreditCardPayment(String name, String brand, Long number, Date expiry, Integer cvv, String owner) throws MLException {
