@@ -178,6 +178,15 @@ public class MLRepository {
 	    return Optional.of(((Query<CreditCardPayment>) query).uniqueResult());
 	}
 
+	public Optional<Purchase> getPurchaseByUserName(String email) {
+	    String stmt = "FROM Purchase p join p.client as c where c.email like :email";	    
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
+	    query.setParameter("email", email);
+	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
+	}
+
+
   
 	  
 

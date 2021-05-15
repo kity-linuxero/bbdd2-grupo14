@@ -77,12 +77,18 @@ public class MLServiceImpl implements MLService {
 	@Override
 	public DeliveryMethod createDeliveryMethod(String name, Float cost, Float startWeight, Float endWeight) throws MLException {
 		Optional<DeliveryMethod> dm = repository.getDeliveryMethodByName(name);
-		if (!dm.isPresent()) {
-			DeliveryMethod deliveryMethod = new DeliveryMethod(name, cost, startWeight, endWeight);
-			return repository.storeDeliveryMethod(deliveryMethod);
-		}else
-			throw new MLException("método de delivery no válido");
+		DeliveryMethod deliveryMethod = new DeliveryMethod(name, cost, startWeight, endWeight);
 		
+		if (!dm.isPresent()) {
+			
+			return repository.storeDeliveryMethod(deliveryMethod);
+		}else {
+			if(dm.equals(deliveryMethod)) {
+				throw new MLException();
+			}else {
+				return repository.storeDeliveryMethod(deliveryMethod);
+			}
+		}
 	}
 
     @Transactional
@@ -139,7 +145,14 @@ public class MLServiceImpl implements MLService {
 
 	@Override
 	public Purchase createPurchase(ProductOnSale productOnSale, Integer quantity, User client, DeliveryMethod deliveryMethod, PaymentMethod paymentMethod, String address, Float coordX, Float coordY, Date dateOfPurchase) throws MLException {
+		
+		Optional<Purchase> p = repository.getPurchaseByUserName(client.getEmail());
+		
 		Purchase pur = new Purchase(productOnSale, quantity, client, deliveryMethod,paymentMethod, address, coordX, coordY, dateOfPurchase);
+		
+		if (pur.equals(p)) {
+			throw new MLException("Credit Cart Payment exists!");
+		}else
 			return repository.storePurchase(pur);
 	}
 
