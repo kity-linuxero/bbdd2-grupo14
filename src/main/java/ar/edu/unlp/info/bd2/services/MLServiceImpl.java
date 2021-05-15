@@ -44,7 +44,7 @@ public class MLServiceImpl implements MLService {
 			Product pro = new Product(name, weight, category);
 			return repository.storeProduct(pro);
 		}else
-			throw new MLException("Product exists!");
+			throw new MLException("Constraint Violation");
 	}
 
 	@Override
@@ -59,26 +59,30 @@ public class MLServiceImpl implements MLService {
 			u.setDayOfBirth((java.util.Date) dayOfBirth);
 			return repository.storeUser(u);
 		}
-		return null;
+		throw new MLException("User exists!");
 	}
 
 	@Override
 	public Provider createProvider(String name, Long cuit) throws MLException {
 		
 		Optional<Provider> p = Optional.ofNullable(repository.getProviderByCuit(cuit));
-		if (p == null) {
+		if (!p.isPresent()) {
 			Provider provider = new Provider(name, cuit);
 			return repository.storeProvider(provider);
 		}else {
-			throw new MLException("Provider exists!");
+			throw new MLException("Constraint Violation");
 		}
 	}
 
 	@Override
-	public DeliveryMethod createDeliveryMethod(String name, Float cost, Float startWeight, Float endWeight)
-			throws MLException {
-		// TODO Auto-generated method stub
-		return null;
+	public DeliveryMethod createDeliveryMethod(String name, Float cost, Float startWeight, Float endWeight) throws MLException {
+		Optional<DeliveryMethod> dm = repository.getDeliveryMethodByName(name);
+		if (!dm.isPresent()) {
+			DeliveryMethod deliveryMethod = new DeliveryMethod(name, cost, startWeight, endWeight);
+			return repository.storeDeliveryMethod(deliveryMethod);
+		}else
+			throw new MLException("Product exists!");
+		
 	}
 
     @Transactional
@@ -113,46 +117,41 @@ public class MLServiceImpl implements MLService {
 
 	@Override
 	public Optional<DeliveryMethod> getDeliveryMethodByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.getDeliveryMethodByName(name);
 	}
 
-	@Override
-	public Optional<CreditCardPayment> getCreditCardPaymentByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Optional<CreditCardPayment> getCreditCardPaymentByName(String name) {
+//		return repository.getCreditCardPaymentByName(name);
+//	}
 
 	@Override
 	public Optional<OnDeliveryPayment> getOnDeliveryPaymentByName(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.getOnDeliveryPaymentByName(name);
 	}
 
 	@Override
 	public Optional<Purchase> getPurchaseById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.getPurchaseById(id);
 	}
 
 	@Override
-	public Purchase createPurchase(ProductOnSale productOnSale, Integer quantity, User client,
-			DeliveryMethod deliveryMethod, PaymentMethod paymentMethod, String address, Float coordX, Float coordY,
-			Date dateOfPurchase) throws MLException {
-		// TODO Auto-generated method stub
-		return null;
+	public Purchase createPurchase(ProductOnSale productOnSale, Integer quantity, User client, DeliveryMethod deliveryMethod, PaymentMethod paymentMethod, String address, Float coordX, Float coordY, Date dateOfPurchase) throws MLException {
+		Purchase pur = new Purchase(productOnSale, quantity, client, deliveryMethod,paymentMethod, address, coordX, coordY, dateOfPurchase);
+			return repository.storePurchase(pur);
 	}
 
-	@Override
-	public Optional<User> getUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Optional<User> getUserByEmail(String email) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
-	public CreditCardPayment createCreditCardPayment(String name, String brand, Long number, Date expiry, Integer cvv,
-			String owner) throws MLException {
-			Optional<CreditCardPayment > ccp = repository.getCreditCardPaymentByNumber(number);
+	public CreditCardPayment createCreditCardPayment(String name, String brand, Long number, Date expiry, Integer cvv, String owner) throws MLException {
+			Optional<CreditCardPayment> ccp = repository.getCreditCardPaymentByNumber(number);
 			if (!ccp.isPresent()) {
 				CreditCardPayment credit = new CreditCardPayment(name, brand, number, expiry, cvv, owner);
 				return repository.storeCreditCardPayment(credit);
@@ -162,21 +161,40 @@ public class MLServiceImpl implements MLService {
 
 	@Override
 	public OnDeliveryPayment createOnDeliveryPayment(String name, Float promisedAmount) throws MLException {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<OnDeliveryPayment> odp = repository.getOnDeliveryPaymentByName(name);
+		if (!odp.isPresent()) {
+			OnDeliveryPayment o = new OnDeliveryPayment(name, promisedAmount);
+			return repository.storeOnDeliveryPayment(o);
+		}else
+			throw new MLException("Credit Cart Payment exists!");
 	}
 
 	@Override
-	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate)
-			throws MLException {
-		// TODO Auto-generated method stub
-		return null;
+	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate) throws MLException {
+		try {
+			ProductOnSale pos = new ProductOnSale(product, provider, price, initialDate);
+			return repository.storeProductOnSale(pos);
+		}catch (Exception e){
+			throw new MLException(e.toString());
+		} 
+		
+		
 	}
 
 	@Override
-	public ProductOnSale getProductOnSaleById(Long id) {
+	public Optional<ProductOnSale> getProductOnSaleById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.getProductOnSaleById(id);
+	}
+
+	@Override
+	public Optional<User> getUserByEmail(String email) {
+		return this.getUserByUsername(email);
+	}
+
+	@Override
+	public Optional<CreditCardPayment> getCreditCardPaymentByName(String name) {
+		return repository.getCreditCardPaymentByName(name);
 	}
 
 }

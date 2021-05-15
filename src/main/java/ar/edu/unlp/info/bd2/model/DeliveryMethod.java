@@ -17,7 +17,7 @@ public class DeliveryMethod {
 	private String name;
 	
 	@Column(name="cost")
-	private Integer cost;
+	private Float cost;
 	
 	@Column(name="startWeight")
 	private Float startWeight;
@@ -29,7 +29,7 @@ public class DeliveryMethod {
 	@JoinColumn(name="deliveryMethod_id")
 	private Set<Purchase> purchases;
 	
-	public DeliveryMethod(String name, Integer cost, Float startWeight, Float endWeight) {
+	public DeliveryMethod(String name, Float cost, Float startWeight, Float endWeight) {
 		this.name = name;
 		this.cost = cost;
 		this.startWeight = startWeight;
@@ -44,11 +44,11 @@ public class DeliveryMethod {
 		this.name = name;
 	}
 
-	public Integer getCost() {
+	public Float getCost() {
 		return cost;
 	}
 
-	public void setCost(Integer cost) {
+	public void setCost(Float cost) {
 		this.cost = cost;
 	}
 

@@ -90,9 +90,9 @@ public class MLRepository {
     }
     
     /* saves a provider and returns it */
-    public Product storeProduct(Product product){
-      sessionFactory.getCurrentSession().save(product);
-      return product;
+    public Product storeProduct(Product p){
+      sessionFactory.getCurrentSession().save(p);
+      return p;
     }
 
 	public Optional<Product> getProductByName(String name) {
@@ -116,7 +116,68 @@ public class MLRepository {
 	      sessionFactory.getCurrentSession().save(credit);
 	      return credit;
 	}
-	  
+
+	public Optional<DeliveryMethod> getDeliveryMethodByName(String name) {
+	    String stmt = "FROM DeliveryMethod dm WHERE dm.name like :name";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<DeliveryMethod> query = session.createQuery(stmt, DeliveryMethod.class);
+	    query.setParameter("name", name);
+	    return Optional.of(((Query<DeliveryMethod>) query).uniqueResult());
+	}
+
+	public DeliveryMethod storeDeliveryMethod(DeliveryMethod deliveryMethod) {
+	      sessionFactory.getCurrentSession().save(deliveryMethod);
+	      return deliveryMethod;
+	}
+
+	public Optional<OnDeliveryPayment> getOnDeliveryPaymentByName(String name) {
+	    String stmt = "FROM OnDeliveryPayment odp WHERE odp.name like :name";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<OnDeliveryPayment> query = session.createQuery(stmt, OnDeliveryPayment.class);
+	    query.setParameter("name", name);
+	    return Optional.of(((Query<OnDeliveryPayment>) query).uniqueResult());
+	}
+
+	public Optional<Purchase> getPurchaseById(Long id) {
+	    String stmt = "FROM Purchase p WHERE p.id like :id";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
+	    query.setParameter("id", id);
+	    return Optional.of(((Query<Purchase>) query).uniqueResult());
+	}
+
+	public Purchase storePurchase(Purchase pur) {
+	      sessionFactory.getCurrentSession().save(pur);
+	      return pur;
+	}
+
+	public OnDeliveryPayment storeOnDeliveryPayment(OnDeliveryPayment o) {
+		sessionFactory.getCurrentSession().save(o);
+		return o;
+	}
+
+	public ProductOnSale storeProductOnSale(ProductOnSale pos) {
+		sessionFactory.getCurrentSession().save(pos);
+		return pos;
+	}
+
+	public Optional<ProductOnSale> getProductOnSaleById(Long id) {
+	    String stmt = "FROM ProductOnSale p WHERE p.id like :id";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<ProductOnSale> query = session.createQuery(stmt, ProductOnSale.class);
+	    query.setParameter("id", id);
+	    return Optional.of(((Query<ProductOnSale>) query).uniqueResult());
+	}
+
+	public Optional<CreditCardPayment> getCreditCardPaymentByName(String name) {
+	    String stmt = "FROM CreditCardPayment ccp WHERE ccp.name like :name";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<CreditCardPayment> query = session.createQuery(stmt, CreditCardPayment.class);
+	    query.setParameter("name", name);
+	    return Optional.of(((Query<CreditCardPayment>) query).uniqueResult());
+	}
+
+  
 	  
 
 }

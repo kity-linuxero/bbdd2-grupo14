@@ -30,13 +30,6 @@ public class MLServiceTestCase {
     @Autowired
     MLService service;
     
-    
-  @Test
-  public void allwaysPass() {
-	  assertTrue(true);
-  }
-    
-    
     @Test
     public void testCreateCategory() throws MLException {
         Category c = this.service.createCategory("Hogar");

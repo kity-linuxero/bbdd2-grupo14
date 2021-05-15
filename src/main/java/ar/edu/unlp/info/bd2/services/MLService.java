@@ -144,7 +144,7 @@ public interface MLService {
 	 * @param id del producto en venta a buscar
 	 * @return
 	 */
-	ProductOnSale getProductOnSaleById(Long id);
+	Optional<ProductOnSale> getProductOnSaleById(Long id);
 
 	/**
 	 * 
