@@ -80,11 +80,10 @@ public class MLServiceImpl implements MLService {
 		DeliveryMethod deliveryMethod = new DeliveryMethod(name, cost, startWeight, endWeight);
 		
 		if (!dm.isPresent()) {
-			
 			return repository.storeDeliveryMethod(deliveryMethod);
 		}else {
-			if(dm.equals(deliveryMethod)) {
-				throw new MLException();
+			if(dm.get().getEndWeight() == deliveryMethod.getEndWeight()) {
+				throw new MLException("método de delivery no válido");
 			}else {
 				return repository.storeDeliveryMethod(deliveryMethod);
 			}
@@ -126,11 +125,6 @@ public class MLServiceImpl implements MLService {
 		return repository.getDeliveryMethodByName(name);
 	}
 
-//	@Override
-//	public Optional<CreditCardPayment> getCreditCardPaymentByName(String name) {
-//		return repository.getCreditCardPaymentByName(name);
-//	}
-
 	@Override
 	public Optional<OnDeliveryPayment> getOnDeliveryPaymentByName(String name) {
 		// TODO Auto-generated method stub
@@ -146,14 +140,18 @@ public class MLServiceImpl implements MLService {
 	@Override
 	public Purchase createPurchase(ProductOnSale productOnSale, Integer quantity, User client, DeliveryMethod deliveryMethod, PaymentMethod paymentMethod, String address, Float coordX, Float coordY, Date dateOfPurchase) throws MLException {
 		
-		Optional<Purchase> p = repository.getPurchaseByUserName(client.getEmail());
+//		Optional<Purchase> p = repository.getPurchaseByDate(dateOfPurchase);
 		
-		Purchase pur = new Purchase(productOnSale, quantity, client, deliveryMethod,paymentMethod, address, coordX, coordY, dateOfPurchase);
+//		Optional<Purchase> p = repository.getPurchaseByQuantity(quantity);
 		
-		if (pur.equals(p)) {
-			throw new MLException("Credit Cart Payment exists!");
-		}else
+		Optional<Purchase> p = repository.getPurchaseByAddress(address);
+		if (p.isPresent()) {
+			throw new MLException("método de delivery no válido");
+		}else {
+			Purchase pur = new Purchase(productOnSale, quantity, client, deliveryMethod,paymentMethod, address, coordX, coordY, dateOfPurchase);
 			return repository.storePurchase(pur);
+		}
+
 	}
 
 	@Override
@@ -203,5 +201,7 @@ public class MLServiceImpl implements MLService {
 	public Optional<CreditCardPayment> getCreditCardPaymentByName(String name) {
 		return repository.getCreditCardPaymentByName(name);
 	}
+	
+	
 
 }

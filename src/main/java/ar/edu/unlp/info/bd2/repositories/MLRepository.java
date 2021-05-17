@@ -7,11 +7,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.edu.unlp.info.bd2.model.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.hibernate.query.Query;
 
 public class MLRepository {
@@ -179,15 +177,67 @@ public class MLRepository {
 	}
 
 	public Optional<Purchase> getPurchaseByUserName(String email) {
+//	    String stmt = "FROM Purchase p join p.client as c where c.email like :email";	    
+//	    Session session = sessionFactory.getCurrentSession();
+//	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
+//	    query.setParameter("email", email);
+//	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
 	    String stmt = "FROM Purchase p join p.client as c where c.email like :email";	    
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
+	    query.setParameter("email", email);
+	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
+
+	}
+	
+	public Optional<Purchase> getPurchaseByProductOnSaleId(String email) {
+	    String stmt = "FROM Purchase p join p.productOnSale as c where c.email like :email";	    
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
 	    query.setParameter("email", email);
 	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
 	}
 
+	public Optional<Purchase> getPurchaseByDate(Date dateOfPurchase) {
+	    String stmt = "FROM Purchase p WHERE p.dateOfPurchase like :dateOfPurchase";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
+	    query.setParameter("dateOfPurchase", dateOfPurchase);
+	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
+	}
+	
+	public Optional<Purchase> getPurchaseByQuantity(Integer quantity) {
+	    String stmt = "FROM Purchase p WHERE p.quantity like :quantity";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
+	    query.setParameter("quantity", quantity);
+	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
+	}
+	
+	public Optional<Purchase> getPurchaseByAddress(String address) {
+	    String stmt = "FROM Purchase p WHERE p.address like :address";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
+	    query.setParameter("address", address);
+	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
+	}
 
-  
+	public Optional<Purchase> getPurchaseByDeliveryMethod(DeliveryMethod deliveryMethod) {
+	    String stmt = "FROM Purchase p join p.deliveryMethod as dm where dm.name like :deliveryMethod.name";
+	    Session session = sessionFactory.getCurrentSession();
+	    
+	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
+	    query.setParameter("deliveryMethod", deliveryMethod);
+	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
+	    
+//	    Session session = sessionFactory.getCurrentSession();
+//	    String stmt = "FROM Purchase p join p.deliveryMethod as dm where dm.endWeight like :endWeight";
+//	    Query query = session.createQuery(stmt);
+//	    query.setParameter("endWeight", endWeight);
+//	    List<Purchase> results = query.getResultList();
+//	    return results;
+	}
+
 	  
 
 }

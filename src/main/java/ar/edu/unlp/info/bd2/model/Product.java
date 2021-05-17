@@ -25,8 +25,8 @@ public class Product {
 	@JoinColumn(name="product_id")
 	private Set<PriceHistory> priceHistories;
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name="product_os")
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name="product_id")
 	private Set<ProductOnSale> productOnSales;
 	
 	@ManyToMany(mappedBy = "products")
@@ -69,5 +69,10 @@ public class Product {
 	public Set<ProductOnSale> getProductsOnSale() {
 		return this.productOnSales;
 	}
+	
+	public void setProductOnSales(Set<ProductOnSale> pos) {
+		this.productOnSales = pos;
+	}
+
 
 }

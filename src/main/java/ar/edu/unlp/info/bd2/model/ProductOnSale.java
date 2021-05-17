@@ -13,7 +13,7 @@ public class ProductOnSale {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="product_os")
+	@JoinColumn(name="product_id")
 	private Product product;
 	
 	@ManyToOne
