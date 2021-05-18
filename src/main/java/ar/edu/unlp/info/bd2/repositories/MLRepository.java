@@ -16,6 +16,7 @@ public class MLRepository {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	public List<Product> getProductsOnePrice;
 	
 	  /* Salva un nuevo usuario y lo devuelve */
 	  public User storeUser(User user){
@@ -243,6 +244,102 @@ public class MLRepository {
 	    return results;
 	}
 
+	public List<Product> getTop3MoreExpensiveProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Purchase> getAllPurchasesMadeByUser(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<User> getUsersSpendingMoreThanInPurchase(Float amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<User> getUsersSpendingMoreThan(Float amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Provider> getTopNProvidersInPurchases(int n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<User> getTopNUsersMorePurchase(int n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Purchase> getPurchasesInPeriod(Date startDate, Date endDate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Product> getProductForCategory(Category category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Purchase> getPurchasesForProvider(Long cuit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Product getBestSellingProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Product> getProductWithMoreThan20percentDiferenceInPrice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Provider getProviderLessExpensiveProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Provider> getProvidersDoNotSellOn(Date day) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<ProductOnSale> getSoldProductsOn(Date day) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Product> getProductsNotSold() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public DeliveryMethod getMostUsedDeliveryMethod() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public OnDeliveryPayment getMoreChangeOnDeliveryMethod() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Category getCategoryWithLessProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Category getHeaviestProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 	  
 
 }
