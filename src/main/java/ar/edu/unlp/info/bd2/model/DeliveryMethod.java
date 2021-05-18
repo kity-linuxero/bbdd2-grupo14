@@ -1,6 +1,6 @@
 package ar.edu.unlp.info.bd2.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -27,7 +27,7 @@ public class DeliveryMethod {
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="deliveryMethod_id")
-	private Set<Purchase> purchases;
+	private List<Purchase> purchases;
 	
 	public DeliveryMethod(String name, Float cost, Float startWeight, Float endWeight) {
 		this.name = name;

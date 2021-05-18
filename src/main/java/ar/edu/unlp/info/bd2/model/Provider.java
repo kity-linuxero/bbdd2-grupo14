@@ -1,6 +1,6 @@
 package ar.edu.unlp.info.bd2.model;
 
-import java.util.Set;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -19,17 +19,17 @@ public class Provider {
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="provider_id")
-	private Set<PriceHistory> priceHistories;
+	private List<PriceHistory> priceHistories;
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="provider_os")
-	private Set<ProductOnSale> productOnSales;
+	private List<ProductOnSale> productOnSales;
 	
 	@ManyToMany(mappedBy = "providers")
-	private Set<Purchase>purchases;
+	private List<Purchase>purchases;
 	
 	@ManyToMany(mappedBy = "providers")
-	private Set<Product>products;
+	private List<Product>products;
 	
 	public Provider(String name, Long cuit) {
 		this.name = name;

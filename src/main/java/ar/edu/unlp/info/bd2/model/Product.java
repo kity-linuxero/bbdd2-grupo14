@@ -1,6 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -23,17 +24,17 @@ public class Product {
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="product_id")
-	private Set<PriceHistory> priceHistories;
+	private List<PriceHistory> priceHistories;
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(targetEntity=ProductOnSale.class,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="product_id")
-	private Set<ProductOnSale> productOnSales;
+	private List<ProductOnSale> productOnSales = new ArrayList<>();
 	
 	@ManyToMany(mappedBy = "products")
-	private Set<Purchase>purchases;
+	private List<Purchase>purchases;
 	
 	@ManyToMany
-	private Set<Provider>providers;
+	private List<Provider>providers;
 	
 	public Product(String aName, float weight, Category aCategory) {
 		this.setName(aName);
@@ -66,12 +67,22 @@ public class Product {
 		category = aCategory;
 	}
 
-	public Set<ProductOnSale> getProductsOnSale() {
+	public List<ProductOnSale> getProductsOnSale() {
 		return this.productOnSales;
 	}
 	
-	public void setProductOnSales(Set<ProductOnSale> pos) {
+	public void setProductOnSales(List<ProductOnSale> pos) {
 		this.productOnSales = pos;
+	}
+	
+	public void addProductOnSales(ProductOnSale p) {
+		this.productOnSales.add(p);
+		p.setProduct(this);
+	}
+	
+	public void removeProductOnSales(ProductOnSale p) {
+		this.productOnSales.remove(p);
+		p.setProduct(null);
 	}
 
 

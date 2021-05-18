@@ -123,7 +123,6 @@ public class MLRepository {
 	    return Optional.ofNullable(((Query<DeliveryMethod>) query).uniqueResult());
 	}
 
-	//public Optional<DeliveryMethod> storeDeliveryMethod(DeliveryMethod deliveryMethod) {
 	public DeliveryMethod storeDeliveryMethod(DeliveryMethod deliveryMethod) {
 	      sessionFactory.getCurrentSession().save(deliveryMethod);
 	      return deliveryMethod;
@@ -177,11 +176,6 @@ public class MLRepository {
 	}
 
 	public Optional<Purchase> getPurchaseByUserName(String email) {
-//	    String stmt = "FROM Purchase p join p.client as c where c.email like :email";	    
-//	    Session session = sessionFactory.getCurrentSession();
-//	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
-//	    query.setParameter("email", email);
-//	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
 	    String stmt = "FROM Purchase p join p.client as c where c.email like :email";	    
 	    Session session = sessionFactory.getCurrentSession();
 	    TypedQuery<Purchase> query = session.createQuery(stmt, Purchase.class);
@@ -230,12 +224,23 @@ public class MLRepository {
 	    query.setParameter("deliveryMethod", deliveryMethod);
 	    return Optional.ofNullable(((Query<Purchase>) query).uniqueResult());
 	    
-//	    Session session = sessionFactory.getCurrentSession();
-//	    String stmt = "FROM Purchase p join p.deliveryMethod as dm where dm.endWeight like :endWeight";
-//	    Query query = session.createQuery(stmt);
-//	    query.setParameter("endWeight", endWeight);
-//	    List<Purchase> results = query.getResultList();
-//	    return results;
+	}
+
+	public Optional<ProductOnSale> getProductOnSaleByProduct(Product product) {
+	    String stmt = "FROM ProductOnSale p where p.product like :product";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<ProductOnSale> query = session.createQuery(stmt, ProductOnSale.class);
+	    query.setParameter("product", product);
+	    return Optional.ofNullable(((Query<ProductOnSale>) query).uniqueResult());
+	}
+
+	public List<ProductOnSale> getProductsOnSaleByProduct(Product product) {
+	    String stmt = "FROM ProductOnSale p where p.product like :product";
+	    Session session = sessionFactory.getCurrentSession();
+	    TypedQuery<ProductOnSale> query = session.createQuery(stmt, ProductOnSale.class);
+	    query.setParameter("product", product);
+	    List<ProductOnSale> results = query.getResultList();
+	    return results;
 	}
 
 	  

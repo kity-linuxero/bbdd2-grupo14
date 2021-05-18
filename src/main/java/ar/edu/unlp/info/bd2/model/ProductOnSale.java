@@ -1,7 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -12,7 +12,7 @@ public class ProductOnSale {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne//(targetEntity=Product.class, fetch = FetchType.LAZY)
 	@JoinColumn(name="product_id")
 	private Product product;
 	
@@ -31,7 +31,7 @@ public class ProductOnSale {
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="productOnSale_id")
-	private Set<Purchase> purchases;
+	private List<Purchase> purchases;
 	
 	public ProductOnSale(Product product, Provider provider, Float price, Date initialDate) {
 		super();
@@ -39,6 +39,7 @@ public class ProductOnSale {
 		this.provider = provider;
 		this.price = price;
 		this.initialDate = initialDate;
+		product.addProductOnSales(this);
 	}
 
 	public Product getProduct() {

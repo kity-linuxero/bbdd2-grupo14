@@ -1,5 +1,5 @@
 package ar.edu.unlp.info.bd2.model;
-import java.util.Set;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +19,7 @@ public abstract class PaymentMethod {
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="paymentMethod_id")
-	private Set<Purchase> purshases;
+	private List<Purchase> purshases;
 
 	public PaymentMethod(String name) {
 		this.name = name;

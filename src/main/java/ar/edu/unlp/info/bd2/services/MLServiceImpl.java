@@ -1,6 +1,7 @@
 package ar.edu.unlp.info.bd2.services;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,10 +141,6 @@ public class MLServiceImpl implements MLService {
 	@Override
 	public Purchase createPurchase(ProductOnSale productOnSale, Integer quantity, User client, DeliveryMethod deliveryMethod, PaymentMethod paymentMethod, String address, Float coordX, Float coordY, Date dateOfPurchase) throws MLException {
 		
-//		Optional<Purchase> p = repository.getPurchaseByDate(dateOfPurchase);
-		
-//		Optional<Purchase> p = repository.getPurchaseByQuantity(quantity);
-		
 		Optional<Purchase> p = repository.getPurchaseByAddress(address);
 		if (p.isPresent()) {
 			throw new MLException("método de delivery no válido");
@@ -176,19 +173,20 @@ public class MLServiceImpl implements MLService {
 
 	@Override
 	public ProductOnSale createProductOnSale(Product product, Provider provider, Float price, Date initialDate) throws MLException {
-		try {
+		
+		List<ProductOnSale> p = repository.getProductsOnSaleByProduct(product);
+		
+		if (p.isEmpty() || (initialDate.after(p.get(p.size()-1).getInitialDate())) ) { //Es nuevo
 			ProductOnSale pos = new ProductOnSale(product, provider, price, initialDate);
 			return repository.storeProductOnSale(pos);
-		}catch (Exception e){
-			throw new MLException(e.toString());
-		} 
-		
-		
+		}else {
+				throw new MLException("Ya existe un precio para el producto con fecha de inicio de vigencia posterior a la fecha de inicio dada");}
+	
+	
 	}
 
 	@Override
 	public Optional<ProductOnSale> getProductOnSaleById(Long id) {
-		// TODO Auto-generated method stub
 		return repository.getProductOnSaleById(id);
 	}
 
