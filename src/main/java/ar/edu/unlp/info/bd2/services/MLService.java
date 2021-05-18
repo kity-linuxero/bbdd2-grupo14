@@ -1,6 +1,6 @@
 package ar.edu.unlp.info.bd2.services;
+import ar.edu.unlp.info.bd2.exceptions.MLException;
 import ar.edu.unlp.info.bd2.model.*;
-import ar.edu.unlp.info.bd2.repositories.MLException;
 
 import java.util.Date;
 import java.util.Optional;
@@ -24,6 +24,7 @@ public interface MLService {
 	 * @return el producto creado
 	 * @throws MLException 
 	 */
+	
 	Product createProduct(String name, Float weight, Category category) throws MLException;
 	
 	/**
@@ -143,7 +144,7 @@ public interface MLService {
 	 * @param id del producto en venta a buscar
 	 * @return
 	 */
-	ProductOnSale getProductOnSaleById(Long id);
+	Optional<ProductOnSale> getProductOnSaleById(Long id);
 
 	/**
 	 * 
@@ -173,5 +174,4 @@ public interface MLService {
 	 */
 	Optional<Purchase> getPurchaseById(Long id);
 	
-
 }

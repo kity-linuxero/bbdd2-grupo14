@@ -2,8 +2,8 @@ package ar.edu.unlp.info.bd2.services;
 
 import ar.edu.unlp.info.bd2.config.AppConfig;
 import ar.edu.unlp.info.bd2.config.HibernateConfiguration;
+import ar.edu.unlp.info.bd2.exceptions.MLException;
 import ar.edu.unlp.info.bd2.model.*;
-import ar.edu.unlp.info.bd2.repositories.MLException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -67,7 +67,6 @@ public class MLServiceTestCase {
         MLException ex = assertThrows(MLException.class, () -> this.service.createUser("federico.orlando@info.unlp.edu.ar", "Federico Orlando", "pas$w0rd", dob));
         assertEquals("Constraint Violation",ex.getMessage());
     }
-    
 
     @Test
     public void testCreateProvider() throws MLException {
@@ -84,7 +83,7 @@ public class MLServiceTestCase {
         MLException ex = assertThrows(MLException.class, () -> this.service.createProvider("Philips",30715589634L));
         assertEquals("Constraint Violation",ex.getMessage());
     }
-    
+//    
     @Test
     public void testCreateProduct() throws MLException {
         Category cat = this.service.createCategory("Hogar");
@@ -103,7 +102,7 @@ public class MLServiceTestCase {
         MLException ex = assertThrows(MLException.class, () -> this.service.createProduct("Lamparita led 7w fria", Float.valueOf(40.5F), cat));
         assertEquals("Constraint Violation",ex.getMessage());
     }
-    
+//    
     @Test
     public void testCreateDeliveryMethod() throws MLException {
         DeliveryMethod dm = this.service.createDeliveryMethod("Moto menos 1kg", 250.0F, 0.01F, 0.9999F);
@@ -145,7 +144,7 @@ public class MLServiceTestCase {
         assertEquals(exp,c.getExpiry());
         assertEquals(Integer.valueOf(452),c.getCvv());
     }
-    
+//    
     @Test
     public void testOnDeliveryPayment() throws MLException {
         OnDeliveryPayment od = this.service.createOnDeliveryPayment("Pago Efectivo Lampara", 100F);
@@ -210,7 +209,6 @@ public class MLServiceTestCase {
         MLException ex = assertThrows(MLException.class, () -> this.service.createProductOnSale(prod, p, 200F, id3));
         assertEquals("Ya existe un precio para el producto con fecha de inicio de vigencia posterior a la fecha de inicio dada" ,ex.getMessage());
     }
-    
     @Test
     public void testCreatePurchase() throws MLException {
         Provider p = this.service.createProvider("Philips",30715589634L);
